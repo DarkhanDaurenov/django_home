@@ -1,0 +1,129 @@
+{% extends 'catalog/base.html' %}
+{% load media_tags %}
+{% block content %}
+        <header>
+            <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+                <h1 class="display-4 fw-normal text-body-emphasis">Главная</h1>
+                <p class="fs-5 text-body-secondary">Вы находитесь на сайте, предназначенном для продажи товаров</p>
+                <a class="w-100 btn btn-sm btn-outline-success" href="{% url 'catalog:product_create'%}">Добавить продукт</a>
+            </div>
+        </header>
+
+
+            <main class="row text-center">
+                {% for object in object_list %}
+                <div class="col-4">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header">
+                            {% if object.product_picture %}
+                            <img src="{{ object.product_picture | my_media }}" alt="фото" class="card-img-top">
+                            {% else %}
+                            <p>No image available</p>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title pricing-card-title">{{ object.product_price}} тенге</h2>
+                            <p>{{object.product_name}}<br>{{ object.product_description|slice:'50'}}</p>
+                            <a class="btn btn-sm btn-outline-success" href="{% url 'catalog:product_update' object.pk %}">Редактировать</a>
+                            <a class="btn btn-sm btn-outline-success" href="{% url 'catalog:product_delete' object.pk %}">Удалить</a>
+                            <a class="btn btn-sm btn-outline-success" href="{% url 'catalog:product_detail' object.pk %}">Посмотреть</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </main>
+        <div class="row">
+            <div class="col">
+                <button class="btn w-100 btn-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample1"
+                        aria-expanded="false" aria-controls="multiCollapseExample1">Как купить?
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn w-100 btn-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    Как доставить?
+                </button>
+            </div>
+            <div class="col">
+                <button class="btn w-100 btn-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample3"
+                        aria-expanded="false" aria-controls="multiCollapseExample3">Какая гарантия?
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        Чтобы купить товар, заполните формулу выше и наши менеджеры свяжутся с вами!
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        Товар будет доставлен в течений 10 дней курьером до вашего адреса, который вы укажите нашему
+                        менеджеру!
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                    <div class="card card-body">
+                        Гарантия на товар 12 месяцев! Если товар доставлен поврежденным, мы вернем вам ваши деньги за
+                        товар!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table mt-3">
+            <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Название товара</th>
+                <th scope="col">Цена за штуку</th>
+                <th scope="col">Количество</th>
+                <th scope="col">Итоговая сумма</th>
+                <th scope="col">Статус заказа</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="alert table-primary" role="alert">
+                <th scope="row">1</th>
+                <td>Кепка</td>
+                <td>3999</td>
+                <td>1</td>
+                <td>3999</td>
+                <td>Новый</td>
+            </tr>
+            <tr class="alert table-warning" role="alert">
+                <th scope="row">2</th>
+                <td>Кроссовки</td>
+                <td>21000</td>
+                <td>1</td>
+                <td>21000</td>
+                <td>Обработка</td>
+            </tr>
+            <tr class="alert table-success" role="alert">
+                <th scope="row">3</th>
+                <td>Футболка</td>
+                <td>6399</td>
+                <td>3</td>
+                <td>19197</td>
+                <td>Обработан</td>
+            </tr>
+            <tr class="alert table-danger" role="alert">
+                <th scope="row">3</th>
+                <td>Куртка</td>
+                <td>35000</td>
+                <td>1</td>
+                <td>35000</td>
+                <td>Отмена</td>
+            </tr>
+            </tbody>
+        </table>
+{% endblock %}
+

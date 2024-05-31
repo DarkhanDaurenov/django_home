@@ -1,0 +1,41 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "product_category": 4,
+      "product_name": "Кепка",
+      "product_description": "Кепка летняя, 100% хлопок, высокая посадка",
+      "product_picture": "goods/head_HYD5gx4.jpg",
+      "product_price": 3999,
+      "create_at": "2024-05-23T07:36:48.301Z",
+      "updated_at": "2024-05-23T07:36:48.301Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "product_category": 5,
+      "product_name": "Кроссовки",
+      "product_description": "Летние, комбинированные - сетка, кожа",
+      "product_picture": "goods/sneakers_0uske2H.jpg",
+      "product_price": 21000,
+      "create_at": "2024-05-23T07:37:15.737Z",
+      "updated_at": "2024-05-23T07:37:15.737Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "product_category": 6,
+      "product_name": "Футболка",
+      "product_description": "Летняя женская футболка, 100% хлопок",
+      "product_picture": "goods/tshirt_aPIN9cf.jpg",
+      "product_price": 6399,
+      "create_at": "2024-05-23T07:37:36.701Z",
+      "updated_at": "2024-05-23T07:37:36.701Z"
+    }
+  }
+]

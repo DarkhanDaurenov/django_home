@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "django-19-2-знакомства с джанго"
+version = "0.1.0"
+description = ""
+authors = ["DarkhanDaurenov <takishevdarkhan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.6"
+psycopg2-binary = "^2.9.9"
+pillow = "^10.3.0"
+ipython = "^8.24.0"
+setuptools = "^69.5.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

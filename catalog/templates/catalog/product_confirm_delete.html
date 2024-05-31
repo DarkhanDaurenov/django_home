@@ -1,0 +1,66 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<div class="col-12 mt-5 ">
+    <div class="row">
+        <div class="col-6">
+            <div class="card ">
+                <div class="card-body">
+                    <form method='POST'>
+                        {% csrf_token %}
+                        <p>Хотите удалить продукт "{{ object.product_name }}" </p>
+                        <button type="submit" class="btn btn-sm btn-outline-success">Подтвердить</button>
+                        <a href="{% url 'catalog:product_list' %}" class="btn btn-sm btn-outline-warning">Отмена</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+            <div class="col">
+                <button class="btn w-100 btn-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample1"
+                        aria-expanded="false" aria-controls="multiCollapseExample1">Как купить?
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn w-100 btn-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    Как доставить?
+                </button>
+            </div>
+            <div class="col">
+                <button class="btn w-100 btn-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample3"
+                        aria-expanded="false" aria-controls="multiCollapseExample3">Какая гарантия?
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        Чтобы купить товар, заполните формулу выше и наши менеджеры свяжутся с вами!
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        Товар будет доставлен в течений 10 дней курьером до вашего адреса, который вы укажите нашему
+                        менеджеру!
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                    <div class="card card-body">
+                        Гарантия на товар 12 месяцев! Если товар доставлен поврежденным, мы вернем вам ваши деньги за
+                        товар!
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
