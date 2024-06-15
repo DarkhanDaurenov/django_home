@@ -2,20 +2,36 @@
 
 {% block content %}
   <div class="col-12 mt-5">
-    <div class="row">
+    <form method="post" enctype="multipart/form-data">
       <div class="col-6">
         <div class="card">
+            {% if object %}
+            <p class="card-text">Редактирование</p>
+            {% else %}
+            <p class="card-text">Создание</p>
+            {% endif %}
           <div class="card-body">
-            <form method="post">
               {% csrf_token %}
               {{ form.as_p }}
-              <button type="submit" class="btn btn-sm btn-outline-success">Создать</button>
+              <button type="submit" class="btn btn-sm btn-outline-success">
+                  {% if object %}Сохранить{% else %}Создать{% endif %}
+              </button>
               <a href="{% url 'catalog:product_list' %}" class="btn btn-sm btn-outline-success">Отмена</a>
-            </form>
           </div>
         </div>
       </div>
-    </div>
+        <div class="col-6">
+            <div class="card">
+                <p class="card-text">Версия продукта</p>
+                <div class="card-body">
+                    {{ formset.management_form }}
+                    {% for form in formset.forms %}
+                        {{ form.as_p }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </form>
   </div>
 <div class="row mt-5">
             <div class="col">
