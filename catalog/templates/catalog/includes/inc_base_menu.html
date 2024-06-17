@@ -55,7 +55,18 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Выход</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'users:logout' %}" class="dropdown-item">Выход</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                {% else %}
+                <li><a href="{% url 'users:login' %}" class="dropdown-item">Вход</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a href="{% url 'users:register' %}" class="dropdown-item">Регистрация</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
