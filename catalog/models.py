@@ -1,6 +1,8 @@
-from django.db import models
-
 NULLABLE_FIELDS = {"blank": True, "null": True}
+
+
+from django.db import models
+from users.models import User
 
 
 class Category(models.Model):
@@ -38,6 +40,8 @@ class Product(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="дата обновления записи"
     )
+
+    owner = models.ForeignKey(User, verbose_name='Владелец', help_text="Укажите владельца продукта", on_delete=models.SET_NULL, **NULLABLE_FIELDS)
 
     def __str__(self):
         return (
