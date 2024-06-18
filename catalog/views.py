@@ -55,7 +55,7 @@ def form_valid(self, form):
             return self.form_invalid(form)
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(UpdateView, LoginRequiredMixin):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
