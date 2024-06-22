@@ -5,7 +5,7 @@
             <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                 <h1 class="display-4 fw-normal text-body-emphasis">Главная</h1>
                 <p class="fs-5 text-body-secondary">Вы находитесь на сайте, предназначенном для продажи товаров</p>
-                {% if user.is_authenticated %}
+                {% if user.is_superuser %}
                 <a class="w-100 btn btn-sm btn-outline-success" href="{% url 'catalog:product_create'%}">Добавить продукт</a>
                 {% endif %}
             </div>
@@ -26,8 +26,10 @@
                         <div class="card-body">
                             <h2 class="card-title pricing-card-title">{{ object.product_price}} тенге</h2>
                             <p>{{object.product_name}}<br>{{ object.product_description|slice:'50'}}</p>
+                            {% if perms.catalog.can_update_category and perms.catalog.can_remove_publish and perms.catalog.can_update_description or user == object.owner %}
                             <a class="btn btn-sm btn-outline-success" href="{% url 'catalog:product_update' object.pk %}">Редактировать</a>
                             <a class="btn btn-sm btn-outline-success" href="{% url 'catalog:product_delete' object.pk %}">Удалить</a>
+                            {% endif %}
                             <a class="btn btn-sm btn-outline-success" href="{% url 'catalog:product_detail' object.pk %}">Посмотреть</a>
                         </div>
                     </div>
