@@ -42,6 +42,7 @@ class Product(models.Model):
     )
 
     owner = models.ForeignKey(User, verbose_name='Владелец', help_text="Укажите владельца продукта", on_delete=models.SET_NULL, **NULLABLE_FIELDS)
+    publish = models.BooleanField(default=False, verbose_name="Статус продукта", **NULLABLE_FIELDS)
 
     def __str__(self):
         return (
@@ -53,6 +54,11 @@ class Product(models.Model):
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ("product_name",)
+        permissions = [
+            ('can_update_category', 'Can update category'),
+            ('can_remove_publish', 'Can remove publish'),
+            ('can_update_description', 'Can update description'),
+        ]
 
 
 class Version(models.Model):
